@@ -243,6 +243,7 @@ void OutputResult(void) {
         len = snprintf(buf, sizeof(buf),
             "{\"type\":\"background\","
             "\"hud\":\"Copied %s\","
+            "\"close\":false,"
             "\"notification\":{\"title\":\"Color\",\"body\":\"%s — rgb(%d,%d,%d)\"}}\n",
             hex, hex, g_pickR, g_pickG, g_pickB);
     }
