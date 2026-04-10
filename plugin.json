@@ -31,6 +31,14 @@
       "takes_query": true
     },
     {
+      "name": "pick",
+      "title": "Pick from screen",
+      "description": "Click anywhere to grab a pixel color",
+      "mode": "detail",
+      "exec": "pick.js",
+      "keywords": ["pick", "eyedropper"]
+    },
+    {
       "name": "random",
       "title": "Random color",
       "description": "Generate a random beautiful color",
