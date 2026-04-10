@@ -4,7 +4,7 @@
   "keyword": "color",
   "icon": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#FF6B35'/><circle cx='8' cy='9' r='2.5' fill='#FF4081'/><circle cx='16' cy='9' r='2.5' fill='#448AFF'/><circle cx='12' cy='15' r='2.5' fill='#69F0AE'/></svg>",
   "description": "Color picker, converter, palette generator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Yoki",
   "homepage": "https://github.com/yoki-run/plugin-color",
   "license": "MIT",
