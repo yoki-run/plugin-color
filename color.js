@@ -17,6 +17,7 @@ async function main() {
         <code style="display:block;padding:2px 0;color:#aaa">color hsl(20,100%,60%)</code>
         <code style="display:block;padding:2px 0;color:#aaa">color coral</code>
         <code style="display:block;padding:2px 0;color:#aaa">color palette #FF6B35</code>
+        <code style="display:block;padding:2px 0;color:#aaa">color pick</code>
         <code style="display:block;padding:2px 0;color:#aaa">color random</code>
       </div>`
     ));

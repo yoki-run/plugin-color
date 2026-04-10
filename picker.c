@@ -226,38 +226,25 @@ void OutputResult(void) {
         char hex[16];
         snprintf(hex, sizeof(hex), "#%02X%02X%02X", g_pickR, g_pickG, g_pickB);
 
+        /* Copy hex to clipboard */
+        if (OpenClipboard(NULL)) {
+            EmptyClipboard();
+            int slen = (int)strlen(hex) + 1;
+            HGLOBAL hMem = GlobalAlloc(GMEM_MOVEABLE, slen);
+            if (hMem) {
+                char *p = (char *)GlobalLock(hMem);
+                memcpy(p, hex, slen);
+                GlobalUnlock(hMem);
+                SetClipboardData(CF_TEXT, hMem);
+            }
+            CloseClipboard();
+        }
+
         len = snprintf(buf, sizeof(buf),
-            "{\"type\":\"detail\","
-            "\"markdown\":\"<div style=\\\"padding:0\\\">"
-            "<div style=\\\"background:%s;padding:32px 24px;border-radius:12px;text-align:center;margin-bottom:16px\\\">"
-            "<div style=\\\"font-size:28px;font-weight:bold;color:%s;font-family:monospace\\\">%s</div>"
-            "</div>"
-            "<div style=\\\"font-family:monospace;font-size:13px;padding:0 4px;color:#aaa\\\">"
-            "rgb(%d, %d, %d)</div></div>\","
-            "\"metadata\":["
-            "{\"label\":\"HEX\",\"value\":\"%s\"},"
-            "{\"label\":\"RGB\",\"value\":\"rgb(%d, %d, %d)\"},"
-            "{\"label\":\"R\",\"value\":\"%d\"},"
-            "{\"label\":\"G\",\"value\":\"%d\"},"
-            "{\"label\":\"B\",\"value\":\"%d\"}"
-            "],"
-            "\"actions\":["
-            "{\"title\":\"Copy HEX\",\"type\":\"copy\",\"value\":\"%s\"},"
-            "{\"title\":\"Copy RGB\",\"type\":\"copy\",\"value\":\"rgb(%d, %d, %d)\"},"
-            "{\"title\":\"View\",\"type\":\"yoki_run\",\"value\":\"color %s\"}"
-            "]}\n",
-            hex,
-            /* text color: dark on light bg, white on dark bg */
-            (g_pickR * 299 + g_pickG * 587 + g_pickB * 114 > 128000) ? "#000" : "#fff",
-            hex,
-            g_pickR, g_pickG, g_pickB,
-            hex,
-            g_pickR, g_pickG, g_pickB,
-            g_pickR, g_pickG, g_pickB,
-            hex,
-            g_pickR, g_pickG, g_pickB,
-            hex
-        );
+            "{\"type\":\"background\","
+            "\"hud\":\"Copied %s\","
+            "\"notification\":{\"title\":\"Color\",\"body\":\"%s — rgb(%d,%d,%d)\"}}\n",
+            hex, hex, g_pickR, g_pickG, g_pickB);
     }
 
     DWORD written;
