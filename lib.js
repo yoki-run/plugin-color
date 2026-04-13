@@ -77,7 +77,7 @@ function fromRgb(r, g, b) {
 }
 
 function fromHsl(h, s, l) {
-  h = h % 360;
+  h = ((h % 360) + 360) % 360;
   s = Math.max(0, Math.min(100, s)) / 100;
   l = Math.max(0, Math.min(100, l)) / 100;
   const c = (1 - Math.abs(2*l - 1)) * s;

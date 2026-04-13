@@ -31,4 +31,4 @@ async function main() {
     ]
   ));
 }
-main();
+main().catch(e => { try { writeResponse(detail("Error: " + e.message)); } catch(_) {} process.exit(1); });

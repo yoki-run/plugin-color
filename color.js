@@ -67,4 +67,4 @@ async function main() {
     ]
   ));
 }
-main();
+main().catch(e => { try { writeResponse(error("Error", e.message)); } catch(_) {} process.exit(1); });
